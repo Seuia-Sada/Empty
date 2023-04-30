@@ -9,7 +9,7 @@
 
 void maze_traverse(const char* map, char* coord, const char unsigned width)
 {
-    return; // compiling only
+    return; // compiling only, function not terminated
 
     static char unsigned w, h;
 
