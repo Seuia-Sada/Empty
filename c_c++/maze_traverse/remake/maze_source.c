@@ -1,15 +1,12 @@
 
-#ifndef maze_source
-#define maze_source 1U
-
-#include "maze_header.h"
+#pragma once
 
 #include <stdbool.h>
 #include <string.h>
 
-void maze_traverse(const char* map, char* coord, const char unsigned width)
+void maze_traverse(const char* map, const char unsigned width, char* coord)
 {
-    return; // compiling only, function not terminated
+    return; // compiling only
 
     static char unsigned w, h;
 
@@ -60,20 +57,18 @@ void maze_traverse(const char* map, char* coord, const char unsigned width)
         byte_pos = next_pos - map_begin;
 
         // horizontal check (up | down)
-        if(byte_pos < w || byte_pos >= h * (w - 1) - 1)
+        if(byte_pos <= w || byte_pos >= h * (w - 1) - 1)
             init = false;
 
         // vertical check (left | right)
-        else if(byte_pos % w == 0 || byte_pos % (w - 1) == 0)
+        else if(byte_pos % (w + 1) == 0 || byte_pos % w == 0)
             init = false;
 
-        if(init == true)  maze_traverse(0, next_pos, 0);
+        else  maze_traverse(0, 0, next_pos);
     }
 
     if(init == true && --call_depth == 0)  init = false;
 
-    return;
+    return ;
 }
-
-#endif
 
