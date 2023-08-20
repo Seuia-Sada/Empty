@@ -1,5 +1,5 @@
 
-#include "maze_header.h"
+#include "maze_header.c"
 
 char mb_map[] = 
 {
